@@ -92,8 +92,10 @@ h1{font-size:clamp(34px,4.17vw,60px);line-height:1.08;letter-spacing:-.032em;tex
 .tile:last-child{scroll-snap-align:end}
 .tile__art{flex:1;display:grid;place-items:center;padding:6px 0 18px}
 .tile__art img{width:100%;max-width:clamp(230px,22vw,330px);height:auto}
-.tile h3{font-size:26px;line-height:1.16;margin-bottom:8px}
-.tile p{color:var(--ink-2);font-size:16.5px;line-height:1.5}
+.tile__tag{display:inline-flex;gap:8px;margin-bottom:12px;font-size:14px;font-weight:550;color:var(--ink-2)}
+.tile__tag b{font-weight:600;color:var(--purple)}
+.tile h3{font-size:26px;line-height:1.16;margin-bottom:10px}
+.tile p{color:var(--ink-2);font-size:16px;line-height:1.5}
 .dots{grid-area:2/1;display:flex;align-items:center;margin:14px 0 -18px -6px}
 .dots button{padding:18px 5px}
 .dots i{display:block;width:9px;height:9px;border-radius:9px;background:var(--lilac-2);transition:width .4s var(--glide),background-color .3s}
@@ -170,6 +172,7 @@ h1{font-size:clamp(34px,4.17vw,60px);line-height:1.08;letter-spacing:-.032em;tex
 .more article{padding:28px;background:#fff;color:var(--ink);border-radius:16px;min-height:220px}
 .more h3{font-size:26px;line-height:1.15;margin-bottom:10px}
 .more p{color:var(--ink-2);font-size:16px}
+.more article.more__span2{grid-column:span 2}
 .more article.more__wide{grid-column:span 2;grid-row:span 2;display:grid;grid-template-columns:1fr minmax(0,340px);align-items:center;gap:24px;overflow:hidden}
 .more__wide .object{width:100%;height:auto}
 .more__num{margin-bottom:26px;color:var(--purple)}
@@ -283,6 +286,7 @@ h1{font-size:clamp(34px,4.17vw,60px);line-height:1.08;letter-spacing:-.032em;tex
   .chips,.brandpick{margin-top:-6px}
   .more{grid-template-columns:1fr}
   .more article{min-height:0}
+  .more article.more__span2{grid-column:auto}
   .more article.more__wide{grid-column:auto;grid-row:auto;grid-template-columns:1fr}
   .more__wide .object{max-width:320px;margin:auto}
   .panel{grid-template-columns:1fr;min-height:0}
