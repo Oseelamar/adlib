@@ -230,13 +230,6 @@
     boards.forEach((im, k) => im.classList.toggle('on', k === i));
   }));
 
-  /* Why tabs */
-  const tabs = $$('#whyTabs button'), bodies = $$('#whyBody > div');
-  tabs.forEach((t, i) => t.addEventListener('click', () => {
-    tabs.forEach((x, k) => x.setAttribute('aria-selected', String(k === i)));
-    bodies.forEach((x, k) => x.classList.toggle('on', k === i));
-  }));
-
   /* Quotes */
   const quotes = $$('#quotes figure');
   let q = 0;
