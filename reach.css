@@ -30,8 +30,8 @@
 .ac__foot svg{color:var(--purple)}
 .ac__kpi{display:flex;align-items:baseline;gap:10px;margin:4px 0 14px}
 .ac__kpi span{color:var(--ink-3);font-size:13px}
-.ac__big{font:550 42px/1 var(--sans);letter-spacing:-.035em;font-variant-numeric:lining-nums;color:var(--ink)}
-.ac__big--sm{font-size:27px}
+.ac__big{font:400 46px/1 "Nanum Myeongjo",var(--serif);letter-spacing:-.03em;color:var(--ink)}
+.ac__big--sm{font-size:30px}
 .ac__cap{display:block;white-space:nowrap;margin-bottom:4px;font-size:11.5px;font-weight:550;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
 .ac__reg{display:grid;grid-template-columns:118px 1fr 40px;align-items:center;gap:12px;padding:8px 2px;font-size:13px}
 .ac__reg b{font-weight:600;font-size:12.5px;text-align:right}
@@ -165,10 +165,10 @@
 
 @media (max-width:900px){
   .ac{padding:15px;border-radius:18px}
-  .ac__big{font-size:34px}
+  .ac__big{font-size:38px}
   .ac__reg{grid-template-columns:100px 1fr 36px}
   .ac{padding:15px;border-radius:18px}
-  .ac__big{font-size:34px}
+  .ac__big{font-size:38px}
   .ac__reg{grid-template-columns:100px 1fr 36px}
   /* Phones: no timeline line or dots, just each feature with its card and plenty of room between them */
   .reach__track,.reach .item__dot{display:none}
