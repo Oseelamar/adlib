@@ -64,16 +64,30 @@
 
 /* Filled icon cards: solid icons, and a colour of its own for each card's header icon */
 .ac svg.sf{fill:currentColor;stroke:none}
-.ac--filled .ac__ic{color:#fff}
 .ac--filled .ac__ic svg{width:17px;height:17px}
-.ac--filled[data-card="0"] .ac__ic{background:#1FA45A}
-.ac--filled[data-card="1"] .ac__ic{background:#2F7CF6}
-.ac--filled[data-card="2"] .ac__ic{background:#F2711C}
-.ac--filled[data-card="3"] .ac__ic{background:#0FA3A3}
-.ac--filled[data-card="4"] .ac__ic{background:#EF5B4C}
-.ac--filled[data-card="5"] .ac__ic{background:#E9A115}
+/* Light tint behind, the deeper shade of the same colour on the icon */
+.ac--filled[data-card="0"] .ac__ic{background:#E2F5E9;color:#16834A}
+.ac--filled[data-card="1"] .ac__ic{background:#E3EDFE;color:#2161D6}
+.ac--filled[data-card="2"] .ac__ic{background:#FDEBDC;color:#D35A10}
+.ac--filled[data-card="3"] .ac__ic{background:#DCF3F2;color:#0A8585}
+.ac--filled[data-card="4"] .ac__ic{background:#FDE5E2;color:#D2433A}
+.ac--filled[data-card="5"] .ac__ic{background:#FBF0D6;color:#A87106}
 .ac--filled .ac__mono svg{width:17px;height:17px}
 .ac--filled .ac__foot svg.sf,.ac--filled .pill svg.sf,.ac--filled .chip2 svg.sf{width:14px;height:14px}
+
+/* Premium surface: a white card, soft grey panels inside it, a finer layered shadow */
+.ac--filled{--line:#ECECF2;padding:20px;background:#fff;border-color:#EBEBF1;box-shadow:0 1px 2px rgba(16,18,40,.04),0 2px 6px -2px rgba(16,18,40,.05),0 24px 48px -24px rgba(25,23,79,.22)}
+.ac--filled .ac__row,.ac--filled .ac__kpis>div,.ac--filled .ac__chart{background:#F7F7FA;border-color:#EFEFF4}
+.ac--filled .ac__mono{background:#fff;box-shadow:0 1px 2px rgba(16,18,40,.06)}
+.ac--filled .bar{background:#E9E9F0}
+.ac--filled .chip2{background:#F7F7FA;border-color:#ECECF2}
+.ac--filled .chip2--on{background:#EFEEFF;border-color:#E0DEFF}
+.ac--filled .pill--soft{background:#F7F7FA;border-color:#ECECF2}
+.ac--filled .seg2{background:#F2F2F6}
+.ac--filled .ac__input{background:#fff;border-color:#D5D7FA;box-shadow:0 0 0 4px #F4F4FF}
+.ac--filled .ac__reg+.ac__reg{border-top-color:#EFEFF4}
+.ac--filled .tog{background:#E3E3EC}
+.ac--filled .tog.on{background:var(--purple)}
 
 /* Concept 1 to 5 now carry cards instead of objects */
 .f1 .c-global .c-card{position:absolute;right:26px;top:26px;width:min(44%,330px)}
@@ -212,12 +226,19 @@
   .f9__main{padding:20px 14px}
   .f9__screen{inset:20px 14px;gap:18px}
   .f10__track{left:18px}
-  .f10 .item{grid-template-columns:36px minmax(0,1fr);row-gap:16px}
+  .f10__line{padding:8px 0 48px}
+  .f10 .item{grid-template-columns:36px minmax(0,1fr);row-gap:24px;padding:40px 0}
+  .f10 .item+.item{border-top:1px solid #F0F0F5}
+  .f10 .item__txt h3{font-size:26px;margin:10px 0 8px}
+  .f10 .item__txt p{font-size:15.5px;line-height:1.6}
+  .f10 .item:nth-child(n) .item__card{grid-column:1/-1;position:relative;z-index:1}
+  .f10 .item__card .ac{max-width:none;padding:18px}
+  .f10 .ac__meter{width:76px}
   .f10 .item__dot{grid-column:1;grid-row:1;align-self:start;margin-top:6px}
   .f10 .item:nth-child(n) .item__txt{grid-column:2;grid-row:1;text-align:left}
   .f10 .item:nth-child(n) .item__txt p{margin-left:0}
   .f10 .item:nth-child(n) .item__txt .num{justify-content:flex-start}
-  .f10 .item:nth-child(n) .item__card{grid-column:2;grid-row:2;justify-content:flex-start}
+  .f10 .item:nth-child(n) .item__card{grid-column:1/-1;grid-row:2;justify-content:flex-start}
   .switch{gap:2px;padding:5px}
   .switch button{height:38px;padding:0 9px;font-size:14px}
   .switch__hint{display:none}
