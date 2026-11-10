@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AdLib | Section transitions</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23535BFE'/%3E%3Cpath d='M8 21l6-6 3 3 7-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="transitions.css?v=7">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="proto">
+
+<header class="nav" id="top">
+  <div class="nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Back to the AdLib page"><img src="assets/logo.svg" alt="AdLib" width="126" height="26"></a>
+  </div>
+</header>
+
+<section class="platform" id="platform">
+  <div class="torn" data-fill="#fff" aria-hidden="true"></div>
+  <div class="halftone halftone--tr" aria-hidden="true"></div>
+  <div class="fall" id="fall">
+    <div class="fall__stage">
+      <div class="platform__head">
+        <h2>Powerful programmatic. Simplified.</h2>
+        <p>AdLib gives agencies the tools, data, and automation to run enterprise-quality campaigns, from CTV and Audio to Geofencing and YouTube, all under one roof, with zero trafficking headaches.</p>
+      </div>
+      <div class="dsps" id="dsps">
+        <div class="dsps__row">
+          <span class="dsp"><img src="assets/dsp/amazon.png" alt="">Amazon DSP</span>
+          <span class="dsp"><img src="assets/dsp/beeswax.png" alt="">Beeswax</span>
+          <span class="dsp"><img src="assets/dsp/criteo.png?v=7" alt="">Criteo</span>
+          <span class="dsp"><img src="assets/dsp/broadsign.png" alt="">Broadsign</span>
+          <span class="dsp"><img src="assets/dsp/dv360.png" alt="">DV360</span>
+          <span class="dsp"><img src="assets/dsp/magnite.png" alt="">Magnite</span>
+        </div>
+        <div class="dsps__row">
+          <span class="dsp"><img src="assets/dsp/viant.png" alt="">Viant</span>
+          <span class="dsp"><img src="assets/dsp/vistar.png" alt="">Vistar</span>
+          <span class="dsp"><img src="assets/dsp/yahoo.png" alt="">Yahoo</span>
+          <span class="dsp"><img src="assets/dsp/smadex.png" alt="">Smadex</span>
+          <span class="dsp"><img src="assets/dsp/moloco.png" alt="">Moloco</span>
+          <span class="dsp"><img src="assets/dsp/mediamath.png" alt="">MediaMath by Infillion</span>
+        </div>
+      </div>    </div>
+  </div>
+
+  <div class="pin" id="pin">
+    <div class="pin__stage">
+      <ol class="pin__list" id="pinList">
+        <li class="on"><button type="button">Unified Self-Service Buying Platform</button></li>
+        <li><button type="button">Managed Service Buying</button></li>
+        <li><button type="button">Programmatic APIs</button></li>
+        <li><button type="button">White Labeled DSP</button></li>
+        <li><button type="button">Automated Client Billing</button></li>
+        <li><button type="button">Infinitely Customizable</button></li>
+      </ol>
+
+      <div class="pin__visual" id="pinVisual">
+        <figure class="vis vis--pad on">
+          <div class="uicard">
+            <img class="object" src="assets/objects/shield-cut.webp" alt="An antique shield printed in halftone, with purple paper shapes and a torn media plan" width="1024" height="1024">
+          </div>
+        </figure>
+        <figure class="vis vis--pad">
+          <div class="uicard">
+            <img class="object" src="assets/objects/radio-cut.webp" alt="A vintage tabletop radio printed in halftone, with purple paper knobs and a torn media plan" loading="lazy" width="1024" height="1024">
+            <div class="chips"><span>Placement</span><span>Trafficking</span><span>Bidding</span><span>Optimization</span></div>
+          </div>
+        </figure>
+        <figure class="vis vis--pad">
+          <div class="uicard">
+            <img class="object" src="assets/objects/typewriter-cut.webp" alt="A vintage typewriter printed in halftone, with purple paper panels and a sheet of typed numbers" loading="lazy" width="1024" height="1024">
+          </div>
+        </figure>
+        <figure class="vis vis--pad">
+          <div class="uicard" id="brand">
+            <div class="object boards" id="boards">
+              <img class="on" src="assets/objects/billboard-cut.webp" alt="A vintage billboard printed in halftone, its face pasted over with bold brand-coloured paper" loading="lazy" width="1024" height="1024">
+              <img src="assets/objects/billboard-coral-cut.webp" alt="" loading="lazy" width="1024" height="1024">
+              <img src="assets/objects/billboard-green-cut.webp" alt="" loading="lazy" width="1024" height="1024">
+            </div>
+            <div class="brandpick">
+              <b>Your Brand</b>
+              <div class="swatches" id="swatches" role="group" aria-label="Preview a brand colour">
+                <button type="button" style="--c:#535BFE" class="on" aria-label="Purple"></button>
+                <button type="button" style="--c:#E5533D" aria-label="Coral"></button>
+                <button type="button" style="--c:#0E8A6A" aria-label="Green"></button>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="vis vis--pad">
+          <div class="uicard">
+            <img class="object" src="assets/objects/safe-cut.webp" alt="A vintage bank safe printed in halftone, with a purple dial and a torn invoice across its door" loading="lazy" width="1024" height="1024">
+            <div class="chips"><span>Daily</span><span>Weekly</span><span>Monthly</span><i></i><span>Credit card</span><span>Wire transfer</span><span>ACH</span></div>
+          </div>
+        </figure>
+        <figure class="vis vis--pad">
+          <div class="uicard">
+            <img class="object" src="assets/objects/wrench-cut.webp" alt="A vintage adjustable wrench printed in halftone, with a purple paper screw and striped handle" loading="lazy" width="1024" height="1024">
+          </div>
+        </figure>
+      </div>
+
+      <div class="pin__text" id="pinText" aria-live="polite">
+        <p class="on">An easy to use DSP-agnostic platform where campaigns launch in minutes across every channel, screen type, and stage of the funnel. 20+ premium Demand Side Platforms and Retail Media Networks.</p>
+        <p>Fully managed trafficking &amp; optimization allows your team to focus on core business functions rather than the complexities of ad placement, bidding, and optimization.</p>
+        <p>Build your own applications, workflows, and products on top of the AdLib platform. We build our APIs first, and the rest of our platform is built on top.</p>
+        <p>Instantly launch your own branded programmatic offering without investing in development or specialized resources for support and campaign management.</p>
+        <p>Improve cash flow and reduce the risk of nonpayment by automatically invoicing and collecting payments on a daily, weekly, or monthly basis via credit card, wire transfer, or ACH payment.</p>
+        <p>Reduce setup time with customized workflows and automated ad operations at a massive scale.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="switch" role="group" aria-label="Choose a transition version">
+  <span class="switch__hint">Scroll to play</span>
+  <button type="button" data-v="1">1 Funnel</button>
+  <button type="button" data-v="2">2 Hub</button>
+  <button type="button" data-v="3">3 Switch</button>
+  <button type="button" class="switch__again" id="again" aria-label="Back to the start of this version">↺</button>
+</div>
+
+<script src="transitions.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* Comparison page for the chips-to-steps transition. Builds on styles.css. */
+.proto .platform{--lead:300vh;padding-bottom:0}
+
+/* Drawing layer for the three versions; the chips sit above it */
+.morph{position:absolute;inset:0;z-index:0;pointer-events:none}
+.proto .dsps{z-index:1}
+.proto .dsp{transition:background-color .35s ease,color .35s ease}
+.proto .dsp.lit{background:#fff;color:var(--ink)}
+.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lines path{fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.5;stroke-linecap:round}
+.lines .outline{stroke:rgba(255,255,255,.38);stroke-width:1.25}
+
+/* AdLib mark with its counter (Funnel and Hub) */
+.mark{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;will-change:transform,opacity}
+.mark img{width:150px;height:auto}
+.count{font-size:14px;color:rgba(255,255,255,.85);white-space:nowrap}
+.count b{font-weight:600;color:#fff}
+
+/* DSP Sync panel (Switch) */
+.sync{position:absolute;opacity:0;border-radius:22px;background:rgba(13,15,26,.14);border:1.25px solid rgba(255,255,255,.18);will-change:transform,opacity}
+.sync header{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 18px}
+.sync header img{height:17px;width:auto}
+.sync header span{font-size:14px;color:rgba(255,255,255,.85)}
+.sync .count{position:absolute;left:18px;bottom:16px}
+.tg{position:absolute;left:0;top:0;width:48px;height:26px;border-radius:26px;background:rgba(255,255,255,.24);transition:background-color .3s ease}
+.tg::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .35s var(--glide),background-color .3s ease}
+.tg.on{background:#fff}
+.tg.on::after{background:var(--purple);transform:translateX(22px)}
+
+/* Version switch */
+.switch{position:fixed;left:50%;bottom:22px;z-index:60;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:6px;background:#fff;border-radius:99px;box-shadow:0 18px 44px -14px rgba(13,15,26,.55)}
+.switch__hint{padding:0 12px 0 14px;font-size:13.5px;color:var(--ink-2);white-space:nowrap}
+.switch button{height:42px;padding:0 18px;border-radius:99px;font-size:15px;font-weight:550;color:var(--ink-2);white-space:nowrap;transition:background-color .25s,color .25s}
+.switch button[aria-pressed=true]{background:var(--purple);color:#fff}
+.switch .switch__again{width:42px;padding:0;font-size:19px;color:var(--purple)}
+
+@media (max-width:900px){
+  .proto .platform{--lead:260vh}
+  /* Steps stay pinned here too, so every version lands in place on a phone */
+  .proto .pin{height:calc(var(--stage) + var(--lead) + 72vh * 6);margin-top:calc((var(--stage) + var(--lead))*-1)}
+  .proto .pin__stage{position:sticky;top:64px;height:var(--stage);display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:22px 0 86px}
+  .proto .pin__list{display:block;grid-column:1;grid-row:1}
+  .proto .pin__list li{display:none;padding:0}
+  .proto .pin__list li.on{display:block}
+  .proto .pin__list button{font-size:26px;color:#fff}
+  .proto .pin__visual{display:block;height:100%;grid-column:1;grid-row:2}
+  .proto .vis{position:absolute;inset:0;opacity:0!important;visibility:hidden!important;transform:translateY(16px)!important;pointer-events:none}
+  .proto .vis.on{opacity:1!important;visibility:visible!important;transform:none!important}
+  .proto .vis--pad{display:flex}
+  .proto .uicard .object{max-width:min(320px,38vh)}
+  .proto .chips,.proto .brandpick{margin-top:-6px}
+  .proto .pin__text{display:block;grid-column:1;grid-row:3;min-height:124px}
+  .proto .pin__text p{font-size:15.5px}
+  .tg{width:40px;height:22px}
+  .tg::after{width:16px;height:16px}
+  .tg.on::after{transform:translateX(18px)}
+  .sync header{height:44px}
+  .sync .count{bottom:12px}
+  .mark img{width:120px}
+  .count{font-size:13px}
+  .switch{bottom:14px;max-width:calc(100vw - 16px)}
+  .switch__hint{display:none}
+  .switch button{height:40px;padding:0 13px;font-size:14px}
+  .switch .switch__again{width:38px}
+}
