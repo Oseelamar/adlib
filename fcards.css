@@ -62,6 +62,19 @@
 .ac__legend{display:flex;gap:14px;margin-top:10px;font-size:12px;color:var(--ink-2)}
 .ac__legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 
+/* Filled icon cards: solid icons, and a colour of its own for each card's header icon */
+.ac svg.sf{fill:currentColor;stroke:none}
+.ac--filled .ac__ic{color:#fff}
+.ac--filled .ac__ic svg{width:17px;height:17px}
+.ac--filled[data-card="0"] .ac__ic{background:#1FA45A}
+.ac--filled[data-card="1"] .ac__ic{background:#2F7CF6}
+.ac--filled[data-card="2"] .ac__ic{background:#F2711C}
+.ac--filled[data-card="3"] .ac__ic{background:#0FA3A3}
+.ac--filled[data-card="4"] .ac__ic{background:#EF5B4C}
+.ac--filled[data-card="5"] .ac__ic{background:#E9A115}
+.ac--filled .ac__mono svg{width:17px;height:17px}
+.ac--filled .ac__foot svg.sf,.ac--filled .pill svg.sf,.ac--filled .chip2 svg.sf{width:14px;height:14px}
+
 /* Concept 1 to 5 now carry cards instead of objects */
 .f1 .c-global .c-card{position:absolute;right:26px;top:26px;width:min(44%,330px)}
 .f1 .c-global .c-card .ac{max-width:none}
