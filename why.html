@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AdLib | Why AdLib layouts</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23535BFE'/%3E%3Cpath d='M8 21l6-6 3 3 7-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="why.css?v=10">
+</head>
+<body class="whypage">
+
+<header class="nav" id="top">
+  <div class="nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Back to the AdLib page"><img src="assets/logo.svg" alt="AdLib" width="126" height="26"></a>
+  </div>
+</header>
+
+<main>
+  <div class="wv-lead" aria-hidden="true"></div>
+
+  <!-- 1 Bento: all four points at once -->
+  <section class="wv w1" data-v="1" aria-label="Why AdLib">
+    <div class="w1__grid" id="w1"></div>
+  </section>
+
+  <!-- 2 Sticky: a pinned counter while the statements scroll past -->
+  <section class="wv w2" data-v="2" aria-label="Why AdLib">
+    <div class="w2__in">
+      <aside class="w2__side">
+        <p class="eyebrow">Why AdLib</p>
+        <p class="w2__count"><b id="w2n">01</b><span>/04</span></p>
+        <ol class="w2__labels" id="w2l"></ol>
+      </aside>
+      <div class="w2__blocks" id="w2b"></div>
+    </div>
+  </section>
+
+  <!-- 3 Panels: four tall panels, one opens at a time -->
+  <section class="wv w3" data-v="3" aria-label="Why AdLib">
+    <div class="w3__row" id="w3"></div>
+  </section>
+
+  <!-- 4 Stage: the list beside a large object stage -->
+  <section class="wv w4" data-v="4" aria-label="Why AdLib">
+    <div class="w4__in">
+      <div class="w4__list">
+        <p class="eyebrow">Why AdLib</p>
+        <div class="w4__tabs" id="w4t" role="tablist" aria-label="Why AdLib"><i class="w4__bar" id="w4bar"></i></div>
+      </div>
+      <div class="w4__stage" id="w4s"></div>
+    </div>
+  </section>
+
+  <!-- 5 Manifesto: one statement that lights up as you scroll -->
+  <section class="wv w5" data-v="5" aria-label="Why AdLib">
+    <div class="w5__stick">
+      <p class="eyebrow">Why AdLib</p>
+      <p class="w5__text" id="w5t"></p>
+      <div class="w5__foot">
+        <p class="w5__body" id="w5b"></p>
+        <div class="w5__dots" id="w5d" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wv-tail" aria-hidden="true"></div>
+</main>
+
+<div class="switch" role="group" aria-label="Choose a layout">
+  <span class="switch__hint" id="hint">Layout</span>
+  <button type="button" data-v="1"><span>1</span><em> Bento</em></button>
+  <button type="button" data-v="2"><span>2</span><em> Sticky</em></button>
+  <button type="button" data-v="3"><span>3</span><em> Panels</em></button>
+  <button type="button" data-v="4"><span>4</span><em> Stage</em></button>
+  <button type="button" data-v="5"><span>5</span><em> Manifesto</em></button>
+</div>
+
+<script src="why.js?v=10"></script>
+</body>
+</html>
