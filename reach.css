@@ -170,18 +170,17 @@
   .ac{padding:15px;border-radius:18px}
   .ac__big{font-size:38px}
   .ac__reg{grid-template-columns:100px 1fr 36px}
-  /* Phones: no timeline line or dots, just each feature with its card and plenty of room between them */
-  .reach__track,.reach .item__dot{display:none}
+  /* Phones: the progress line and dots run down the left, with no dividers between features */
+  .reach__track{left:18px}
   .reach__line{padding:0 0 32px}
-  .reach .item{display:block;padding:0}
-  .reach .item+.item{margin-top:88px}
-  .reach .item__txt{padding:0}
-  .reach .item:nth-child(n) .item__txt{text-align:left}
+  .reach .item{grid-template-columns:36px minmax(0,1fr);row-gap:26px;padding:44px 0}
+  .reach .item__dot{grid-column:1;grid-row:1;align-self:start;margin-top:4px}
+  .reach .item:nth-child(n) .item__txt{grid-column:2;grid-row:1;text-align:left;padding:0}
   .reach .item:nth-child(n) .item__txt p{margin-left:0}
   .reach .item:nth-child(n) .item__txt .num{justify-content:flex-start}
+  .reach .item:nth-child(n) .item__card{grid-column:1/-1;grid-row:2;justify-content:flex-start;position:relative;z-index:1}
   .reach .item__txt h3{font-size:26px;margin:10px 0 8px}
   .reach .item__txt p{font-size:15.5px;line-height:1.6}
-  .reach .item__card{margin-top:26px}
   .reach .item__card .ac{max-width:none;padding:18px}
   .reach .ac__meter{width:76px}
 }
