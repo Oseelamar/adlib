@@ -9,8 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=13">
-<link rel="stylesheet" href="features.css?v=13">
+<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="features.css?v=14">
+<link rel="stylesheet" href="fcards.css?v=14">
 </head>
 <body class="fpage">
 
@@ -36,7 +37,7 @@
     <div class="fhead fhead--center"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
     <div class="f2__stage" id="f2">
       <div class="f2__col" id="f2l"></div>
-      <figure class="f2__shot"><img src="assets/ui/UI-Supply-Sources-1.png" alt="AdLib Supply Sources panel listing premium CTV, audio and open exchange partners" width="717" height="1411"></figure>
+      <div class="f2__shot" id="f2c"></div>
       <div class="f2__col" id="f2r"></div>
       <svg class="f2__lines" id="f2lines" aria-hidden="true"></svg>
     </div>
@@ -70,6 +71,56 @@
     </div>
   </section>
 
+  <!-- 6 Stack: a deck of app cards beside the feature list -->
+  <section class="fv f6" data-v="6" aria-label="Reach and data features">
+    <div class="f6__in">
+      <div class="f6__text">
+        <p class="eyebrow">Reach &amp; data</p>
+        <h2 class="ftitle">Every screen. Every audience. One platform.</h2>
+        <ol class="f6__list" id="f6l"></ol>
+      </div>
+      <div class="f6__stage"><div class="f6__deck" id="f6s"></div></div>
+    </div>
+  </section>
+
+  <!-- 7 Bento: six live cards at once -->
+  <section class="fv f7" data-v="7" aria-label="Reach and data features">
+    <div class="f7__in">
+      <div class="fhead"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+      <div class="f7__grid" id="f7"></div>
+    </div>
+  </section>
+
+  <!-- 8 Rows: alternating rows, each card slides in from its side -->
+  <section class="fv f8" data-v="8" aria-label="Reach and data features">
+    <div class="f8__in">
+      <div class="fhead fhead--center"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+      <div id="f8"></div>
+    </div>
+  </section>
+
+  <!-- 9 Window: the features as screens inside an AdLib app window -->
+  <section class="fv f9" data-v="9" aria-label="Reach and data features">
+    <div class="f9__in">
+      <div class="fhead fhead--center"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+      <div class="f9__win">
+        <div class="f9__bar"><i></i><i></i><i></i><span><img src="assets/logo.svg" alt="" width="63" height="13"></span></div>
+        <div class="f9__body">
+          <nav class="f9__nav" id="f9n" aria-label="Features"></nav>
+          <div class="f9__main" id="f9m"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 Timeline: a line draws down the page and each card lands on it -->
+  <section class="fv f10" data-v="10" aria-label="Reach and data features">
+    <div class="f10__in">
+      <div class="fhead fhead--center"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+      <div class="f10__line" id="f10"><i class="f10__track"><b id="f10fill"></b></i></div>
+    </div>
+  </section>
+
   <div class="fv-tail" aria-hidden="true"></div>
 </main>
 
@@ -80,8 +131,13 @@
   <button type="button" data-v="3"><span>3</span><em> Scroll</em></button>
   <button type="button" data-v="4"><span>4</span><em> Index</em></button>
   <button type="button" data-v="5"><span>5</span><em> Gallery</em></button>
+  <button type="button" data-v="6"><span>6</span><em> Stack</em></button>
+  <button type="button" data-v="7"><span>7</span><em> Bento</em></button>
+  <button type="button" data-v="8"><span>8</span><em> Rows</em></button>
+  <button type="button" data-v="9"><span>9</span><em> Window</em></button>
+  <button type="button" data-v="10"><span>10</span><em> Timeline</em></button>
 </div>
 
-<script src="features.js?v=13"></script>
+<script src="features.js?v=14"></script>
 </body>
 </html>
