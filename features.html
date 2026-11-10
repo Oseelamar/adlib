@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AdLib | Feature section concepts</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23535BFE'/%3E%3Cpath d='M8 21l6-6 3 3 7-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=13">
+<link rel="stylesheet" href="features.css?v=13">
+</head>
+<body class="fpage">
+
+<header class="nav" id="top">
+  <div class="nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Back to the AdLib page"><img src="assets/logo.svg" alt="AdLib" width="126" height="26"></a>
+  </div>
+</header>
+
+<main>
+  <div class="fv-lead" aria-hidden="true"></div>
+
+  <!-- 1 Numbers: the figures carry the section -->
+  <section class="fv f1" data-v="1" aria-label="Reach and data features">
+    <div class="f1__in">
+      <div class="fhead fhead--light"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+      <div class="f1__grid" id="f1"></div>
+    </div>
+  </section>
+
+  <!-- 2 Product: the Supply Sources screen with the features pinned around it -->
+  <section class="fv f2" data-v="2" aria-label="Reach and data features">
+    <div class="fhead fhead--center"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+    <div class="f2__stage" id="f2">
+      <div class="f2__col" id="f2l"></div>
+      <figure class="f2__shot"><img src="assets/ui/UI-Supply-Sources-1.png" alt="AdLib Supply Sources panel listing premium CTV, audio and open exchange partners" width="717" height="1411"></figure>
+      <div class="f2__col" id="f2r"></div>
+      <svg class="f2__lines" id="f2lines" aria-hidden="true"></svg>
+    </div>
+  </section>
+
+  <!-- 3 Scroll: one feature at a time in a pinned frame -->
+  <section class="fv f3" data-v="3" aria-label="Reach and data features">
+    <div class="f3__stick">
+      <div class="f3__text">
+        <p class="eyebrow">Reach &amp; data</p>
+        <p class="f3__count"><b id="f3n">01</b><span>/06</span></p>
+        <div class="f3__copy" id="f3c"></div>
+        <div class="f3__bars" id="f3b" aria-hidden="true"></div>
+      </div>
+      <div class="f3__stage" id="f3s"></div>
+    </div>
+  </section>
+
+  <!-- 4 Index: an editorial list that opens row by row -->
+  <section class="fv f4" data-v="4" aria-label="Reach and data features">
+    <div class="f4__in">
+      <div class="fhead"><p class="eyebrow">Reach &amp; data</p><h2 class="ftitle">Every screen. Every audience. One platform.</h2></div>
+      <div class="f4__rows" id="f4"></div>
+    </div>
+  </section>
+
+  <!-- 5 Gallery: scrolling down walks sideways past each feature -->
+  <section class="fv f5" data-v="5" aria-label="Reach and data features">
+    <div class="f5__stick">
+      <div class="f5__track" id="f5"></div>
+    </div>
+  </section>
+
+  <div class="fv-tail" aria-hidden="true"></div>
+</main>
+
+<div class="switch" role="group" aria-label="Choose a concept">
+  <span class="switch__hint" id="hint">Concept</span>
+  <button type="button" data-v="1"><span>1</span><em> Numbers</em></button>
+  <button type="button" data-v="2"><span>2</span><em> Product</em></button>
+  <button type="button" data-v="3"><span>3</span><em> Scroll</em></button>
+  <button type="button" data-v="4"><span>4</span><em> Index</em></button>
+  <button type="button" data-v="5"><span>5</span><em> Gallery</em></button>
+</div>
+
+<script src="features.js?v=13"></script>
+</body>
+</html>
