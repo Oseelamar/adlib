@@ -32,7 +32,7 @@
 .ac__kpi span{color:var(--ink-3);font-size:13px}
 .ac__big{font:300 46px/1 var(--serif);letter-spacing:-.035em;color:var(--ink)}
 .ac__big--sm{font-size:30px}
-.ac__cap{display:block;margin-bottom:4px;font-size:11.5px;font-weight:550;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
+.ac__cap{display:block;white-space:nowrap;margin-bottom:4px;font-size:11.5px;font-weight:550;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
 .ac__reg{display:grid;grid-template-columns:118px 1fr 40px;align-items:center;gap:12px;padding:8px 2px;font-size:13px}
 .ac__reg b{font-weight:600;font-size:12.5px;text-align:right}
 .ac__reg+.ac__reg{border-top:1px dashed #E7E8F5}
@@ -50,7 +50,7 @@
 .chip2{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;background:#fff;border:1px solid var(--line);font-size:12.5px;font-weight:550}
 .chip2 svg{width:13px;height:13px;color:var(--purple)}
 .chip2--on{background:#EEEDFF;border-color:#DCDAFF;color:#4840D8}
-.ac__split{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.ac__split{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
 .seg2{display:flex;gap:2px;padding:3px;border-radius:10px;background:#EFEFFA;font-size:12.5px;font-weight:550;color:var(--ink-2);margin-bottom:14px}
 .seg2 span{flex:1;text-align:center;padding:6px 8px;border-radius:8px}
 .seg2 .on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(25,23,79,.12)}
@@ -170,20 +170,20 @@
   .ac{padding:15px;border-radius:18px}
   .ac__big{font-size:38px}
   .ac__reg{grid-template-columns:100px 1fr 36px}
-  .reach__track{left:18px}
-  .reach__line{padding:8px 0 48px}
-  .reach .item{grid-template-columns:36px minmax(0,1fr);row-gap:24px;padding:40px 0}
-  .reach .item+.item{border-top:1px solid #F0F0F5}
-  .reach .item__txt h3{font-size:26px;margin:10px 0 8px}
-  .reach .item__txt p{font-size:15.5px;line-height:1.6}
-  .reach .item:nth-child(n) .item__card{grid-column:1/-1;position:relative;z-index:1}
-  .reach .item__card .ac{max-width:none;padding:18px}
-  .reach .ac__meter{width:76px}
-  .reach .item__dot{grid-column:1;grid-row:1;align-self:start;margin-top:6px}
-  .reach .item:nth-child(n) .item__txt{grid-column:2;grid-row:1;text-align:left}
+  /* Phones: no timeline line or dots, just each feature with its card and plenty of room between them */
+  .reach__track,.reach .item__dot{display:none}
+  .reach__line{padding:0 0 32px}
+  .reach .item{display:block;padding:0}
+  .reach .item+.item{margin-top:88px}
+  .reach .item__txt{padding:0}
+  .reach .item:nth-child(n) .item__txt{text-align:left}
   .reach .item:nth-child(n) .item__txt p{margin-left:0}
   .reach .item:nth-child(n) .item__txt .num{justify-content:flex-start}
-  .reach .item:nth-child(n) .item__card{grid-column:1/-1;grid-row:2;justify-content:flex-start}
+  .reach .item__txt h3{font-size:26px;margin:10px 0 8px}
+  .reach .item__txt p{font-size:15.5px;line-height:1.6}
+  .reach .item__card{margin-top:26px}
+  .reach .item__card .ac{max-width:none;padding:18px}
+  .reach .ac__meter{width:76px}
 }
 @media (prefers-reduced-motion:reduce){
   .ac,.ac .s,.bar i,.ac__chart i,.tog::after{transition:none!important}
