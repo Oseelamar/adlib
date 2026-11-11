@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AdLib | Testimonial layouts</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23535BFE'/%3E%3Cpath d='M8 21l6-6 3 3 7-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=23">
+<link rel="stylesheet" href="reviews.css?v=23">
+</head>
+<body class="rpage">
+
+<header class="nav" id="top">
+  <div class="nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Back to the AdLib page"><img src="assets/logo.svg" alt="AdLib" width="126" height="26"></a>
+  </div>
+</header>
+
+<main>
+  <!-- 1 Wall: every review at once -->
+  <section class="tv t1" data-v="1" aria-label="Testimonials">
+    <div class="t__in">
+      <div class="thead thead--row" data-head></div>
+      <div class="t1__wall" id="t1"></div>
+    </div>
+  </section>
+
+  <!-- 2 Spotlight: one large quote, pick the person -->
+  <section class="tv t2" data-v="2" aria-label="Testimonials">
+    <div class="t__in">
+      <div class="t2__panel rise">
+        <div class="t2__main">
+          <p class="eyebrow">Don't take our word for it</p>
+          <div class="t2__quotes" id="t2q"></div>
+          <div class="t2__score" data-score></div>
+        </div>
+        <div class="t2__people" id="t2p" role="tablist" aria-label="Choose a review"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Rail: heading on the left, cards running off the right edge -->
+  <section class="tv t3" data-v="3" aria-label="Testimonials">
+    <div class="t3__in">
+      <div class="t3__head rise">
+        <div data-head></div>
+        <div class="t3__nav"><button type="button" id="t3prev" aria-label="Previous review">←</button><button type="button" id="t3next" aria-label="Next review">→</button><span id="t3count">1 / 8</span></div>
+      </div>
+      <div class="t3__rail" id="t3"></div>
+    </div>
+  </section>
+
+  <!-- 4 Stack: a deck of review cards -->
+  <section class="tv t4" data-v="4" aria-label="Testimonials">
+    <div class="t__in t4__in">
+      <div class="thead rise" data-head></div>
+      <div class="t4__stage rise" style="--i:1">
+        <div class="t4__deck" id="t4"></div>
+        <div class="t4__nav"><button type="button" id="t4prev" aria-label="Previous review">←</button><span id="t4count">1 / 8</span><button type="button" id="t4next" aria-label="Next review">→</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Headline: one short quote as the headline, the score, then three more -->
+  <section class="tv t5" data-v="5" aria-label="Testimonials">
+    <div class="t__in">
+      <p class="eyebrow rise">Don't take our word for it</p>
+      <blockquote class="t5__big rise" style="--i:1" id="t5big"></blockquote>
+      <div class="t5__by rise" style="--i:2" id="t5by"></div>
+      <div class="t5__band rise" style="--i:3"><div data-score></div><div class="t5__medals" data-medals></div></div>
+      <div class="t5__grid" id="t5"></div>
+    </div>
+  </section>
+
+  <div class="tv-tail" aria-hidden="true"></div>
+</main>
+
+<div class="switch" role="group" aria-label="Choose a layout">
+  <span class="switch__hint" id="hint">Layout</span>
+  <button type="button" data-v="1"><span>1</span><em> Wall</em></button>
+  <button type="button" data-v="2"><span>2</span><em> Spotlight</em></button>
+  <button type="button" data-v="3"><span>3</span><em> Rail</em></button>
+  <button type="button" data-v="4"><span>4</span><em> Stack</em></button>
+  <button type="button" data-v="5"><span>5</span><em> Headline</em></button>
+</div>
+
+<script src="reviews.js?v=23"></script>
+</body>
+</html>
