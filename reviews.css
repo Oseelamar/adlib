@@ -84,6 +84,15 @@
 .t4__nav button{background:#fff}
 .t4__nav span{margin:0;min-width:44px;text-align:center}
 
+/* 6 Stack .1: the same deck on the primary purple */
+.t4--bold .t4__stage{background-color:var(--purple);background-image:radial-gradient(circle,rgba(255,255,255,.24) 1.3px,transparent 1.7px)}
+.t4--bold .t4__deck .rv{border-color:transparent;box-shadow:0 24px 50px -24px rgba(13,15,60,.55)}
+.t4--bold .t4__deck .rv[data-pos="1"]{opacity:.9}
+.t4--bold .t4__deck .rv[data-pos="2"]{opacity:.6}
+.t4--bold .t4__nav span{color:rgba(255,255,255,.85)}
+.t4--bold .t4__nav button{border-color:#fff}
+.t4--bold .t4__nav button:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+
 /* 5 Headline */
 .t5{text-align:center}
 .t5 .eyebrow{margin-bottom:26px}

@@ -58,18 +58,22 @@
   rail.addEventListener('scroll', () => { t3count.textContent = `${railIndex() + 1} / ${R.length}`; }, { passive: true });
 
   /* 4 Stack */
-  const deck = $('#t4');
-  deck.innerHTML = R.map(r => card(r, 0, 'rv--lg').replace('rv rise', 'rv')).join('');
-  const deckCards = $$('.rv', deck), t4count = $('#t4count');
-  let cur = 0;
-  const lay = from => {
-    deckCards.forEach((c, k) => { const pos = (k - cur + R.length) % R.length; c.dataset.pos = k === from ? 'out' : pos < 3 ? String(pos) : 'x'; });
-    if (from !== undefined) setTimeout(() => { const pos = (from - cur + R.length) % R.length; deckCards[from].dataset.pos = pos < 3 ? String(pos) : 'x'; }, 480);
-    t4count.textContent = `${cur + 1} / ${R.length}`;
+  const makeDeck = id => {
+    const deck = $('#' + id);
+    deck.innerHTML = R.map(r => card(r, 0, 'rv--lg').replace('rv rise', 'rv')).join('');
+    const deckCards = $$('.rv', deck), count = $(`#${id}count`);
+    let cur = 0;
+    const lay = from => {
+      deckCards.forEach((c, k) => { const pos = (k - cur + R.length) % R.length; c.dataset.pos = k === from ? 'out' : pos < 3 ? String(pos) : 'x'; });
+      if (from !== undefined) setTimeout(() => { const pos = (from - cur + R.length) % R.length; deckCards[from].dataset.pos = pos < 3 ? String(pos) : 'x'; }, 480);
+      count.textContent = `${cur + 1} / ${R.length}`;
+    };
+    $(`#${id}next`).addEventListener('click', () => { const from = cur; cur = (cur + 1) % R.length; lay(from); });
+    $(`#${id}prev`).addEventListener('click', () => { cur = (cur - 1 + R.length) % R.length; lay(); });
+    lay();
+    return () => { cur = 0; lay(); };
   };
-  $('#t4next').addEventListener('click', () => { const from = cur; cur = (cur + 1) % R.length; lay(from); });
-  $('#t4prev').addEventListener('click', () => { cur = (cur - 1 + R.length) % R.length; lay(); });
-  lay();
+  const resetDeck4 = makeDeck('t4'), resetDeck6 = makeDeck('t6');
 
   /* 5 Headline */
   $('#t5big').innerHTML = 'Ease of use in a domain where <em>simplicity is rare.</em>';
@@ -81,7 +85,7 @@
 
   /* Layout switch */
   const sections = $$('.tv[data-v]'), buttons = $$('.switch [data-v]'), hint = $('#hint');
-  const names = ['Wall', 'Spotlight', 'Rail', 'Stack', 'Headline'];
+  const names = ['Wall', 'Spotlight', 'Rail', 'Stack', 'Headline', 'Stack .1'];
   const pick = n => {
     history.replaceState(null, '', '#' + n);
     sections.forEach(s => s.classList.toggle('on', +s.dataset.v === n));
@@ -90,8 +94,9 @@
     scrollTo({ top: 0, behavior: 'instant' });
     $$('.rise', $(`.tv[data-v="${n}"]`)).forEach(el => { el.classList.remove('in'); io.unobserve(el); requestAnimationFrame(() => io.observe(el)); });
     if (n === 3) { rail.scrollLeft = 0; t3count.textContent = `1 / ${R.length}`; }
-    if (n === 4) { cur = 0; lay(); }
+    if (n === 4) resetDeck4();
+    if (n === 6) resetDeck6();
   };
   buttons.forEach(b => b.addEventListener('click', () => pick(+b.dataset.v)));
-  pick(clamp(parseInt(location.hash.slice(1), 10) || 1, 1, 5));
+  pick(clamp(parseInt(location.hash.slice(1), 10) || 1, 1, 6));
 })();
