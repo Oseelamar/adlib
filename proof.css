@@ -1,0 +1,39 @@
+/* Testimonials: a deck of G2 review cards on the primary purple (Stack .1). Builds on styles.css. */
+.proof__in{align-items:center}
+.proof .eyebrow{font-size:14px;font-weight:550;letter-spacing:.04em;text-transform:uppercase;color:var(--purple);margin-bottom:16px}
+
+.deck__stage{border-radius:28px;padding:clamp(32px,4vw,56px) clamp(20px,4vw,56px) 28px;background-color:var(--purple);background-image:radial-gradient(circle,rgba(255,255,255,.24) 1.3px,transparent 1.7px);background-size:10px 10px}
+.deck{position:relative;height:400px;max-width:480px;margin:auto}
+
+.rv{display:flex;flex-direction:column;gap:18px;margin:0;padding:30px;border-radius:20px;background:#fff;box-shadow:0 24px 50px -24px rgba(13,15,60,.55)}
+.rv blockquote{font:300 22px/1.4 var(--serif);letter-spacing:-.012em;color:var(--ink)}
+.rv__top{display:flex;align-items:center;justify-content:space-between}
+.rv__top img{width:22px;height:22px}
+.rv .stars{display:flex;gap:2px;color:#FF492C}
+.rv .stars svg{width:15px;height:15px;fill:currentColor}
+.rv figcaption{margin-top:auto}
+.who{display:flex;align-items:center;gap:12px}
+.av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;flex:none;font:600 14px/1 var(--sans);font-style:normal;background:var(--bg,#EEE9FE);color:var(--fg,#6A45DC)}
+.who b{display:block;font-weight:600;font-size:15px}
+.who span span{font-size:13.5px;color:var(--ink-2)}
+
+.deck .rv{position:absolute;left:0;right:0;top:34px;min-height:330px;transition:opacity .55s ease,transform .75s var(--glide)}
+.deck .rv[data-pos="0"]{z-index:5;opacity:1;transform:none}
+.deck .rv[data-pos="1"]{z-index:4;opacity:.9;transform:translateY(-18px) scale(.95)}
+.deck .rv[data-pos="2"]{z-index:3;opacity:.6;transform:translateY(-34px) scale(.9)}
+.deck .rv[data-pos="x"]{z-index:1;opacity:0;transform:translateY(-44px) scale(.86);pointer-events:none}
+.deck .rv[data-pos="out"]{z-index:6;opacity:0;transform:translate(46px,60px) rotate(5deg)}
+
+.deck__nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px}
+.deck__nav button{width:46px;height:46px;border-radius:50%;border:1px solid #fff;background:#fff;font-size:18px;transition:background-color .25s,color .25s,border-color .25s}
+.deck__nav button:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+.deck__nav span{font-size:14px;color:rgba(255,255,255,.85);min-width:44px;text-align:center}
+
+@media (max-width:900px){
+  .deck{height:470px}
+  .deck .rv{min-height:400px;padding:24px}
+  .rv blockquote{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){
+  .deck .rv{transition:none!important}
+}

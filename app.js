@@ -230,13 +230,6 @@
     boards.forEach((im, k) => im.classList.toggle('on', k === i));
   }));
 
-  /* Quotes */
-  const quotes = $$('#quotes figure');
-  let q = 0;
-  const showQ = i => { q = (i + quotes.length) % quotes.length; quotes.forEach((f, k) => f.classList.toggle('on', k === q)); };
-  $('#qPrev').addEventListener('click', () => showQ(q - 1));
-  $('#qNext').addEventListener('click', () => showQ(q + 1));
-
   /* Reveal once, on the way down */
   const io = new IntersectionObserver(ents => ents.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }

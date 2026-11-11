@@ -10,8 +10,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=22">
-<link rel="stylesheet" href="reach.css?v=22">
+<link rel="stylesheet" href="styles.css?v=25">
+<link rel="stylesheet" href="reach.css?v=25">
+<link rel="stylesheet" href="proof.css?v=25">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -102,7 +103,7 @@
     <!-- AdLib's four qualities, in the original order, with the original copy under plainer titles -->
     <div class="rail reveal" id="rail" tabindex="0" role="group" aria-label="Simplicity, Automation, Premium Inventory and Growth Partnership">
       <article class="tile">
-        <div class="tile__art"><img class="object" src="assets/objects/lightswitch.jpg?v=22" alt="A vintage light switch printed in halftone, with a purple paper toggle and a torn media plan" loading="lazy" draggable="false" width="1024" height="1024"></div>
+        <div class="tile__art"><img class="object" src="assets/objects/lightswitch.jpg?v=25" alt="A vintage light switch printed in halftone, with a purple paper toggle and a torn media plan" loading="lazy" draggable="false" width="1024" height="1024"></div>
         <span class="tile__tag"><b>01</b>Simplicity</span>
         <h3>Launch campaigns without the tech hassle</h3>
         <p>Programmatic doesn't have to be complicated. AdLib eliminates the tech barriers so marketers can execute and scale instantly.</p>
@@ -149,7 +150,7 @@
         <div class="dsps__row">
           <span class="dsp"><img src="assets/marks/m01.png" alt="">Amazon DSP</span>
           <span class="dsp"><img src="assets/marks/m02.png" alt="">Beeswax</span>
-          <span class="dsp"><img src="assets/marks/m04.png?v=22" alt="">Criteo</span>
+          <span class="dsp"><img src="assets/marks/m04.png?v=25" alt="">Criteo</span>
           <span class="dsp"><img src="assets/marks/m03.png" alt="">Broadsign</span>
           <span class="dsp"><img src="assets/marks/m05.png" alt="">DV360</span>
           <span class="dsp"><img src="assets/marks/m06.png" alt="">Magnite</span>
@@ -247,6 +248,7 @@
 <section class="proof" id="success">
   <div class="proof__in">
     <div class="proof__head reveal">
+      <p class="eyebrow">Don't take our word for it</p>
       <h2>Trusted by agencies, growth marketers, and performance teams worldwide.</h2>
       <div class="rated rated--lg"><img src="assets/badges/g2-logo-png_seeklogo-407782-1.png" alt="G2" width="34" height="34" loading="lazy"><strong>4.7 / 5</strong></div>
       <div class="medals">
@@ -256,19 +258,9 @@
         <img src="assets/badges/easiet-to-use-summer-2025.png" alt="G2 Easiest To Use" loading="lazy">
       </div>
     </div>
-    <div class="quotes reveal" id="quotes">
-      <figure class="on">
-        <blockquote>AdLib makes it easy to run campaigns across the world's top DSPs. We know its broad mix of channels, creative formats, and inventory partners will never hold us back.</blockquote>
-        <figcaption><img src="assets/people/pedro.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Pedro Paulo M.</b>Head of Media Operations</span></figcaption>
-      </figure>
-      <figure>
-        <blockquote>Having access to a diverse range of programmatic offerings across leading DSPs and SSPs&hellip; has consistently proven to be a highly effective strategy.</blockquote>
-        <figcaption><img src="assets/people/gian.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Gian A.</b>Senior Director</span></figcaption>
-      </figure>
-      <div class="quotes__nav">
-        <button type="button" id="qPrev" aria-label="Previous quote">←</button>
-        <button type="button" id="qNext" aria-label="Next quote">→</button>
-      </div>
+    <div class="deck__stage reveal">
+      <div class="deck" id="deck"></div>
+      <div class="deck__nav"><button type="button" id="deckPrev" aria-label="Previous review">←</button><span id="deckCount">1 / 8</span><button type="button" id="deckNext" aria-label="Next review">→</button></div>
     </div>
   </div>
 </section>
@@ -310,7 +302,8 @@
   </div>
 </footer>
 
-<script src="app.js?v=22"></script>
-<script src="reach.js?v=22"></script>
+<script src="app.js?v=25"></script>
+<script src="reach.js?v=25"></script>
+<script src="proof.js?v=25"></script>
 </body>
 </html>
