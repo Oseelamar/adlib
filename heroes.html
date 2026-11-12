@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto+Serif:opsz,wght@8..144,100..900&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=26">
-<link rel="stylesheet" href="heroes.css?v=26">
+<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="heroes.css?v=28">
 </head>
 <body class="hpage">
 
@@ -33,13 +33,7 @@
         <div class="rated"><img src="assets/badges/g2-logo-png_seeklogo-407782-1.png" alt="G2" width="26" height="26"><strong>4.7 / 5</strong><span>on G2</span></div>
       </div>
       <div class="hero__art">
-        <div class="sw" id="sw">
-          <div class="sv" data-v="1" role="img" aria-label="Eight scattered platform tasks untangle into one tree managed in AdLib"></div>
-          <div class="sv" data-v="2" role="img" aria-label="Twelve platforms connect to AdLib in the centre, then one campaign goes live on all of them"></div>
-          <div class="sv" data-v="3" role="img" aria-label="Platforms arranged on an arch, all feeding into AdLib at the centre"></div>
-          <div class="sv" data-v="4" role="img" aria-label="One campaign in AdLib launches on five platforms at once"></div>
-          <div class="sv" data-v="5" role="img" aria-label="Nine platforms flow into AdLib and come out as one report"></div>
-        </div>
+        <div class="sw" id="sw"></div>
         <button type="button" class="replay" id="replay">Replay</button>
       </div>
     </div>
@@ -48,13 +42,9 @@
 
 <div class="switch" role="group" aria-label="Choose a concept">
   <span class="switch__hint" id="hint">Concept</span>
-  <button type="button" data-v="1"><span>1</span><b> Untangle</b></button>
-  <button type="button" data-v="2"><span>2</span><b> Hub</b></button>
-  <button type="button" data-v="3"><span>3</span><b> Arch</b></button>
-  <button type="button" data-v="4"><span>4</span><b> Command</b></button>
-  <button type="button" data-v="5"><span>5</span><b> Funnel</b></button>
+  <div class="switch__set" id="switch"></div>
 </div>
 
-<script src="heroes.js?v=26"></script>
+<script src="heroes.js?v=28"></script>
 </body>
 </html>
