@@ -70,7 +70,7 @@
 .amark{z-index:6}
 .amark--mid{transform:translate(var(--x),var(--y)) translateY(-50%)}
 .amid--serif{transform:translate(var(--x),var(--y)) translateY(-50%)}
-.amid--serif strong{font:300 32px/1.1 var(--serif);letter-spacing:-.024em;color:var(--ink)}
+.amid--serif strong{font:300 19px/1.18 var(--serif);letter-spacing:-.012em;color:var(--ink)}
 .amid--serif strong span{margin:0;font:inherit;color:var(--purple)}
 
 /* Variation 3: a deeper middle band */
@@ -86,7 +86,7 @@
 @media (max-width:700px){
   .al--edge{width:90px;margin-left:-45px;gap:6px}
   .al--edge small{display:block;font-size:11px}
-  .amid--serif strong{font-size:19px}
+  .amid--serif strong{font-size:14px}
   .v1 .ach{width:74px;margin-left:-37px}
   .v1 .ach b{font-size:11px}
   .al{width:64px;margin-left:-32px}

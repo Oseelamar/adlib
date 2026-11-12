@@ -104,12 +104,12 @@
     lastW = W;
     const z = phone ? 44 : 54, top = z / 2 + 10;
     const R = phone ? 300 : Math.min(half - 56, 500), cx = half, cy = Math.round(top + R);
-    const r2 = R * .8, r3 = R * .5, r4 = R * .27;
+    const r2 = R * .8, r3 = R * .42, r4 = R * .17;
     const H = Math.round(cy + r4 + (phone ? 26 : 40));
     root.style.height = H + 'px';
     const pt = (r, deg) => [cx + r * Math.cos(rad(deg)), cy - r * Math.sin(rad(deg))];
     const org = `style="transform-origin:${cx}px ${cy}px"`;
-    const chDeg = phone ? [137, 108, 72, 43] : [156, 113, 67, 24], chR = phone ? [.65, .69, .69, .65] : [.65, .65, .65, .65];
+    const chDeg = phone ? [137, 108, 72, 43] : [156, 113, 67, 24], chR = phone ? [.63, .68, .68, .63] : [.62, .62, .62, .62];
     const spokes = [(chDeg[0] + chDeg[1]) / 2, 90, (chDeg[2] + chDeg[3]) / 2].map(d => { const p = pt(r3, d), q = pt(r2, d); return `<path class="hair" d="M${p[0]} ${p[1]}L${q[0]} ${q[1]}"/>`; }).join('');
 
     root.insertAdjacentHTML('beforeend', `<svg class="bands" viewBox="0 0 ${W} ${H}" aria-hidden="true">
