@@ -37,10 +37,11 @@
   };
 
   /* A small clock per stage, so a replay can cancel whatever is still queued */
+  let lastMs = 0;
   const clock = () => {
     let ids = [], rafs = new Set();
     return {
-      at(ms, fn) { if (calm) fn(); else ids.push(setTimeout(fn, ms)); },
+      at(ms, fn) { lastMs = Math.max(lastMs, ms); if (calm) fn(); else ids.push(setTimeout(fn, ms)); },
       count(el, to, ms, fmt = v => v) {
         if (calm) { el.textContent = fmt(to); return; }
         const t0 = performance.now();
@@ -229,11 +230,11 @@
       const inner = k < 5, deg = inner ? -90 + 72 * k : -90 + 25.7 + (360 / 7) * (k - 5), a = deg * Math.PI / 180, r = inner ? 88 : 150;
       return { ring: inner ? 0 : 1, f: (((deg + 90) % 360) + 360) % 360 / 360, tile: tileAt(st, d, cx + r * Math.cos(a), cy + r * Math.sin(a)) };
     });
-    const core = add(st, `<div class="core" style="--x:${cx}px;--y:${cy}px">${MARK}</div>`);
+    const core = add(st, `<div class="core" style="--x:${cx}px;--y:${cy}px"><span class="wv" style="--i:0"></span><span class="wv" style="--i:1"></span><span class="wv" style="--i:2"></span>${MARK}</div>`);
     const pill = add(st, `<div class="pl pl--soft" style="--x:180px;--y:382px"><span class="fa">Sending campaign</span><span class="fb">${MARK}Live on 12 platforms</span></div>`);
     return {
       H,
-      reset() { c.stop(); still(st, () => { off(st, 'sent'); off([core, pill], 'in'); rings.forEach(r => { off(r.line, 'on'); off(r.sweep, 'go'); }); spots.forEach(s => off(s.tile, 'in', 'live')); }); },
+      reset() { c.stop(); still(st, () => { off(st, 'sent'); off([core, pill], 'in'); off(core, 'wave'); rings.forEach(r => { off(r.line, 'on'); off(r.sweep, 'go'); }); spots.forEach(s => off(s.tile, 'in', 'live', 'bump')); }); },
       play() {
         c.at(150, () => on(core));
         rings.forEach((r, i) => c.at(450 + i * 200, () => on(r.line, 'on')));
@@ -241,7 +242,9 @@
         c.at(1900, () => on(pill));
         rings.forEach((r, i) => { const t = 2400 + i * 250; c.at(t, () => fire(r.sweep)); c.at(t + 1650, () => off(r.sweep, 'go')); });
         spots.forEach(s => c.at(2400 + s.ring * 250 + s.f * 1600 + 60, () => on(s.tile, 'live')));
-        c.at(4400, () => on(st, 'sent'));
+        c.at(4450, () => on(core, 'wave'));
+        spots.forEach(s => c.at(4450 + (s.ring ? 620 : 300), () => on(s.tile, 'bump')));
+        c.at(5500, () => on(st, 'sent'));
       }
     };
   };
@@ -429,13 +432,20 @@
   new ResizeObserver(fit).observe(sw);
   fit();
 
-  /* Play when the stage is on screen; switching or Replay starts it again */
+  /* Play when the stage is on screen; switching concepts starts it again */
   let cur = items[0], played = false;
-  const io = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting && !played) { played = true; cur.api.play(); } }), { threshold: .35 });
-  const start = () => { cur.api.reset(); played = false; io.unobserve(sw); requestAnimationFrame(() => io.observe(sw)); };
+  const io = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting && !played) { played = true; run(); } }), { threshold: .35 });
+  let again = 0, fadeId = 0;
+  const start = () => { clearTimeout(again); clearTimeout(fadeId); cur.view.classList.remove('fade'); cur.api.reset(); played = false; io.unobserve(sw); requestAnimationFrame(() => io.observe(sw)); };
+  /* Autoplay: three seconds after a run settles, fade out and play it again */
+  const run = () => {
+    lastMs = 0; cur.api.play();
+    if (calm) return;
+    again = setTimeout(() => { cur.view.classList.add('fade'); fadeId = setTimeout(start, 450); }, lastMs + 1500 + 3000);
+  };
   const pick = it => {
     history.replaceState(null, '', '#' + it.key);
-    cur.api.reset();
+    clearTimeout(again); clearTimeout(fadeId); cur.view.classList.remove('fade'); cur.api.reset();
     cur = it;
     items.forEach(x => { x.view.classList.toggle('on', x === it); x.btn.setAttribute('aria-pressed', String(x === it)); });
     hint.textContent = it.name;
@@ -443,6 +453,5 @@
     start();
   };
   items.forEach(it => it.btn.addEventListener('click', () => pick(it)));
-  $('#replay').addEventListener('click', start);
   pick(items.find(it => it.key === location.hash.slice(1)) || items[0]);
 })();
