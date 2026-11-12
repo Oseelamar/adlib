@@ -36,6 +36,8 @@
     stop();
     root.innerHTML = '';
     root.className = 'arch v' + v;
+    root.parentElement.dataset.v = v;
+    if (v === 1) return buildClassic();
     const W = root.clientWidth, phone = W < 700, half = W / 2;
     lastW = W;
     const R = phone ? 300 : Math.min(half - 6, 560), H = Math.round(R + 8), cx = half, by = H;
@@ -93,6 +95,69 @@
     if (calm) { $$('.bnd,.hair,.al,.ach,.amid,.adot,.amark', root).forEach(e => e.classList.add('in')); }
   };
 
+
+  /* Variation 1, Classic: full rings around a full purple circle. Logos ride the outer edge and
+     turn slowly; the lower part of the rings fades out, so logos leave and re-enter the frame. */
+  const KEEP = [1, 0, 2, 3]; /* Audio, Connected TV, Digital Out-of-Home, Video */
+  const buildClassic = () => {
+    const W = root.clientWidth, phone = W < 700, half = W / 2;
+    lastW = W;
+    const z = phone ? 44 : 54, top = z / 2 + 10;
+    const R = phone ? 300 : Math.min(half - 56, 500), cx = half, cy = Math.round(top + R);
+    const r2 = R * .8, r3 = R * .5, r4 = R * .27;
+    const H = Math.round(cy + r4 + (phone ? 26 : 40));
+    root.style.height = H + 'px';
+    const pt = (r, deg) => [cx + r * Math.cos(rad(deg)), cy - r * Math.sin(rad(deg))];
+    const org = `style="transform-origin:${cx}px ${cy}px"`;
+    const chDeg = phone ? [137, 108, 72, 43] : [156, 113, 67, 24], chR = phone ? [.65, .69, .69, .65] : [.65, .65, .65, .65];
+    const spokes = [(chDeg[0] + chDeg[1]) / 2, 90, (chDeg[2] + chDeg[3]) / 2].map(d => { const p = pt(r3, d), q = pt(r2, d); return `<path class="hair" d="M${p[0]} ${p[1]}L${q[0]} ${q[1]}"/>`; }).join('');
+
+    root.insertAdjacentHTML('beforeend', `<svg class="bands" viewBox="0 0 ${W} ${H}" aria-hidden="true">
+      <defs><linearGradient id="ag1" gradientUnits="userSpaceOnUse" x1="0" y1="${cy - R}" x2="0" y2="${cy}"><stop offset="0" stop-color="#EBEBF7"/><stop offset="1" stop-color="#F6F6FC"/></linearGradient></defs>
+      <circle class="bnd" data-b="2" ${org} cx="${cx}" cy="${cy}" r="${R}" fill="url(#ag1)" stroke="#E2E3EF" stroke-width="1.2"/>
+      <circle class="bnd" data-b="1" ${org} cx="${cx}" cy="${cy}" r="${r2}" fill="#fff" stroke="#E6E7F1" stroke-width="1.2"/>
+      ${spokes}
+      <circle class="bnd" data-b="0" ${org} cx="${cx}" cy="${cy}" r="${r3}" fill="#E8E9FF"/>
+    </svg>`);
+    [.2, .14, .09].forEach((o, i) => add(`<span class="wf" style="--x:${cx}px;--y:${cy}px;--d:${2 * r4}px;--k:${(R * 1.04 / r4).toFixed(2)};--o:${o};--i:${i}"></span>`));
+
+    const logos = D.map(([name, m]) => ({ e: add(`<span class="al al--edge" style="--z:${z}px;--x:${cx}px;--y:${cy - R}px"><span class="lt"><img src="assets/marks/${m}.png" alt="" draggable="false"></span><small>${name}</small></span>`), deg: 0 }));
+
+    const zc = phone ? 38 : 56;
+    const chans = KEEP.map((k, i) => {
+      const p = pt(R * chR[i], chDeg[i]);
+      return { e: add(`<span class="ach" style="--z:${zc}px;--x:${p[0]}px;--y:${p[1]}px"><span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true">${CH[k][1]}</svg></span><b>${CH[k][0]}</b></span>`), deg: chDeg[i] };
+    });
+
+    const mid = add(`<div class="amid amid--serif" style="--w:${phone ? 170 : 300}px;--x:${cx}px;--y:${cy - (r3 + r4) / 2}px"><strong>One platform<span>with AdLib</span></strong></div>`);
+    add(`<div class="afade" style="--t:${cy - (phone ? 16 : 30)}px"></div>`);
+    const core = add(`<div class="acore" style="--d:${2 * r4}px;--x:${cx}px;--y:${cy}px"></div>`);
+    const mark = add(`<div class="amark amark--mid" style="--w:${Math.round(r4 * .58)}px;--x:${cx}px;--y:${cy}px">${MARK}</div>`);
+
+    parts = { logos, chans, mid, dots: [], mark, core, bands: $$('.bnd', root), hairs: $$('.hair', root), sweeps: [], R, cx, cy };
+    if (calm) {
+      $$('.bnd,.hair,.al,.ach,.amid,.amark,.acore', root).forEach(e => e.classList.add('in'));
+      logos.forEach((l, i) => { const p = pt(R, 105 - i * 30); l.e.style.setProperty('--x', p[0] + 'px'); l.e.style.setProperty('--y', p[1] + 'px'); });
+    }
+  };
+
+  /* Logos travel the whole outer ring, thirty degrees apart, one slow turn every two minutes */
+  const spin = () => {
+    const { logos, R, cx, cy } = parts, t0 = performance.now();
+    const place = t => {
+      const base = (t - t0) / 120000 * 360;
+      logos.forEach((l, i) => {
+        const a = rad(105 - i * 30 - base);
+        l.e.style.setProperty('--x', (cx + R * Math.cos(a)).toFixed(1) + 'px');
+        l.e.style.setProperty('--y', (cy - R * Math.sin(a)).toFixed(1) + 'px');
+      });
+    };
+    place(t0);
+    logos.forEach(l => l.e.classList.add('live'));
+    const step = t => { place(t); raf = requestAnimationFrame(step); };
+    raf = requestAnimationFrame(step);
+  };
+
   /* Variation 3: logos travel along the outer band, so every platform passes through on any screen */
   const drift = () => {
     const { logos, rl, cx, by } = parts, t0 = performance.now(), N = logos.length;
@@ -142,6 +207,7 @@
     if (calm) return;
     const { logos, chans, mid, dots, mark, bands, hairs } = parts;
     bands.forEach(b => at(100 + (+b.dataset.b) * 220, () => b.classList.add('in')));
+    if (parts.core) { at(100, () => parts.core.classList.add('in')); spin(); }
     at(350, () => mark.classList.add('in'));
     at(1000, () => hairs.forEach(e => e.classList.add('in')));
     chans.forEach((c, i) => at(1050 + i * 90, () => c.e.classList.add('in')));
