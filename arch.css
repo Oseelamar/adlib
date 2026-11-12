@@ -1,0 +1,79 @@
+/* Arch hero: text on top, the arch underneath. Builds on styles.css. */
+.apage{background:#fff}
+.hero--arch{position:relative;overflow:hidden;padding-top:clamp(36px,5vw,72px)}
+.hero--arch .hero__copy{max-width:900px;margin:0 auto;padding:0 var(--gutter);text-align:center}
+.hero--arch h1{font-size:clamp(34px,4.2vw,60px);line-height:1.08}
+.hero--arch .lede{margin-left:auto;margin-right:auto}
+.hero--arch .actions,.hero--arch .rated{justify-content:center}
+.arch{position:relative;max-width:1180px;margin:clamp(34px,4vw,56px) auto 0;overflow:hidden;font-family:var(--sans);user-select:none;-webkit-user-select:none}
+.arch__base{height:clamp(44px,5vw,64px);background-color:var(--purple);background-image:radial-gradient(circle,rgba(255,255,255,.24) 1.3px,transparent 1.7px);background-size:10px 10px}
+.arch svg.bands{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* Bands grow out from the centre */
+.bnd{transform-box:view-box;transform:scale(.2);opacity:0;transition:transform 1s var(--glide),opacity .5s ease}
+.bnd.in{transform:none;opacity:1}
+.hair{fill:none;stroke:#E4E5F0;stroke-width:1.2;opacity:0;transition:opacity .8s ease}
+.hair.in{opacity:1}
+.swp{fill:none;stroke:var(--purple);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:.1 1;stroke-dashoffset:.1;opacity:0}
+.swp.go{stroke-dashoffset:-1;opacity:1;transition:stroke-dashoffset 1.9s linear}
+
+/* Platform logos on the outer band */
+.al{position:absolute;left:0;top:0;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;width:96px;margin-left:-48px;margin-top:calc(var(--z) / -2);opacity:0;transform:translate(var(--x),var(--y)) scale(.7);transition:opacity .45s ease,transform .7s var(--glide)}
+.al.in{opacity:var(--o,1);transform:translate(var(--x),var(--y))}
+.al.live{transition:none}
+.al .lt{position:relative;display:grid;place-items:center;width:var(--z);height:var(--z);border-radius:calc(var(--z) * .27);background:#fff;border:1px solid #E6E7F0;box-shadow:0 1px 2px rgba(16,18,40,.05),0 8px 18px -12px rgba(25,23,79,.35);transition:border-color .4s ease}
+.al .lt img{width:56%;height:56%;object-fit:contain}
+.al small{font-size:12.5px;font-weight:550;line-height:1.2;color:var(--ink);white-space:nowrap}
+.al.lit .lt{border-color:var(--purple)}
+.bd{position:absolute;right:-5px;top:-5px;display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#17A765;color:#fff;border:1.5px solid #fff;transform:scale(0);transition:transform .45s var(--glide)}
+.bd svg{width:8px;height:8px}
+.al.ok .bd{transform:none}
+
+/* Ad channels on the next band in */
+.ach{position:absolute;left:0;top:0;z-index:3;display:flex;flex-direction:column;align-items:center;gap:9px;width:200px;margin-left:-100px;margin-top:calc(var(--z) / -2);text-align:center;opacity:0;transform:translate(var(--x),var(--y)) translateY(10px);transition:opacity .5s ease,transform .8s var(--glide)}
+.ach.in{opacity:1;transform:translate(var(--x),var(--y))}
+.ai{display:grid;place-items:center;width:var(--z);height:var(--z);border-radius:calc(var(--z) * .22);background:#F3F3FA;color:var(--purple);transition:background-color .45s ease,color .45s ease}
+.ai svg{width:46%;height:46%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ach b{font-weight:550;font-size:16px;line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+.ach.hit .ai{background:var(--purple);color:#fff}
+
+/* Middle band: what AdLib does */
+.amid{position:absolute;left:0;top:0;z-index:3;width:var(--w);margin-left:calc(var(--w) / -2);text-align:center;opacity:0;transform:translate(var(--x),var(--y));transition:opacity .7s ease}
+.amid.in{opacity:1}
+.amid strong{display:block;font-weight:550;font-size:20px;letter-spacing:-.01em;color:var(--purple)}
+.amid span{display:block;margin-top:6px;font-size:15px;line-height:1.35;color:var(--ink)}
+.adot{position:absolute;left:0;top:0;z-index:3;display:grid;place-items:center;width:var(--z);height:var(--z);margin:calc(var(--z) / -2) 0 0 calc(var(--z) / -2);border-radius:50%;background:#fff;color:var(--purple);opacity:0;transform:translate(var(--x),var(--y)) scale(.5);transition:opacity .4s ease,transform .7s var(--glide)}
+.adot.in{opacity:1;transform:translate(var(--x),var(--y))}
+.adot svg{width:52%;height:52%;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.amark{position:absolute;left:0;top:0;z-index:3;width:var(--w);margin-left:calc(var(--w) / -2);color:#fff;opacity:0;transform:translate(var(--x),var(--y));transition:opacity .6s ease}
+.amark.in{opacity:1}
+.amark svg{display:block;width:100%;height:auto}
+
+/* The wave: three filled circles spreading from the core */
+.wf{position:absolute;left:0;top:0;z-index:2;width:var(--d);height:var(--d);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);border-radius:50%;background:var(--purple);opacity:0;transform:translate(var(--x),var(--y));pointer-events:none}
+.arch.wave .wf{animation:awf 2.4s cubic-bezier(.2,.6,.3,1) 1 forwards;animation-delay:calc(var(--i) * 300ms)}
+@keyframes awf{from{opacity:var(--o);transform:translate(var(--x),var(--y)) scale(1)}to{opacity:0;transform:translate(var(--x),var(--y)) scale(var(--k))}}
+
+/* Variation 3: a deeper middle band */
+.v3 .amid strong{color:#fff}
+.v3 .amid span{color:rgba(255,255,255,.86)}
+
+/* Variation switch */
+.switch{position:fixed;left:50%;bottom:22px;z-index:60;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:6px;background:#fff;border-radius:99px;box-shadow:0 18px 44px -14px rgba(13,15,26,.55)}
+.switch__hint{padding:0 10px 0 14px;min-width:74px;font-size:13.5px;color:var(--ink-2);white-space:nowrap}
+.switch button{height:42px;min-width:42px;padding:0 14px;border-radius:99px;font-size:15px;font-weight:550;color:var(--ink-2);transition:background-color .25s,color .25s}
+.switch button[aria-pressed=true]{background:var(--purple);color:#fff}
+
+@media (max-width:700px){
+  .al{width:64px;margin-left:-32px}
+  .al small{display:none}
+  .ach{width:66px;margin-left:-33px;gap:6px}
+  .ach b{font-size:10.5px;line-height:1.15}
+  .amid strong{font-size:14px}
+  .amid span{margin-top:3px;font-size:10.5px;line-height:1.3}
+  .switch{bottom:14px}
+}
+@media (max-width:900px){.nav__in{height:64px}}
+@media (prefers-reduced-motion:reduce){
+  .arch *{transition:none!important;animation:none!important}
+}
