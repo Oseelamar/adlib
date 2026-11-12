@@ -140,9 +140,10 @@ small{display:block;font-size:10.5px;line-height:1.25;color:var(--ink-3);font-we
 .core{position:absolute;left:0;top:0;z-index:3;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--purple);color:#fff;box-shadow:0 0 0 9px rgba(83,91,254,.08);transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%)) scale(.7);opacity:0;transition:transform .7s var(--glide),opacity .4s ease}
 .core.in{transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%));opacity:1}
 .core .mk{position:relative;width:32px}
-.wv{position:absolute;inset:0;border-radius:50%;border:2px solid var(--purple);opacity:0;pointer-events:none}
-.core.wave .wv{animation:wv 1.9s cubic-bezier(.2,.6,.3,1) 1 forwards;animation-delay:calc(var(--i) * 260ms)}
-@keyframes wv{from{opacity:.75;inset:0}to{opacity:0;inset:-150px}}
+.wf{position:absolute;left:0;top:0;z-index:1;width:72px;height:72px;border-radius:50%;background:var(--purple);opacity:0;transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%));pointer-events:none}
+.s21.wave .wf{animation:wf 2s cubic-bezier(.2,.6,.3,1) 1 forwards;animation-delay:calc(var(--i) * 280ms)}
+@keyframes wf{from{opacity:var(--o);transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%)) scale(1)}to{opacity:0;transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%)) scale(4.8)}}
+.s21.sent .pl{background-image:radial-gradient(circle,rgba(255,255,255,.26) 1px,transparent 1.4px);background-size:7px 7px}
 .tl.bump{animation:bump .6s ease-out 1}
 @keyframes bump{40%{transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%)) scale(1.12)}}
 

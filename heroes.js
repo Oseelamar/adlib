@@ -20,7 +20,7 @@
   const path = (svg, d, cls) => { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('pathLength', '1'); p.setAttribute('class', cls); svg.appendChild(p); return p; };
   const cursor = (st, label, x, y, cls = '') => add(st, `<span class="ct ${cls}" style="--x:${x}px;--y:${y}px">${ARROW}<span>${label}</span></span>`);
   const fire = p => { p.classList.remove('go'); void p.getBoundingClientRect(); p.classList.add('go'); };
-  const on = (els, c = 'in') => [].concat(els).forEach(e => e.classList.add(c));
+  const on = (els, c = 'in') => [].concat(els).forEach(e => e.classList.add(...[].concat(c)));
   const off = (els, ...c) => [].concat(els).forEach(e => e.classList.remove(...c));
 
   /* Right-angled wire with rounded corners */
@@ -228,13 +228,14 @@
     const rings = [88, 150].map(r => ({ r, line: path(svg, circle(cx, cy, r), 'ring'), sweep: path(svg, circle(cx, cy, r), 'swp') }));
     const spots = D.map((d, k) => {
       const inner = k < 5, deg = inner ? -90 + 72 * k : -90 + 25.7 + (360 / 7) * (k - 5), a = deg * Math.PI / 180, r = inner ? 88 : 150;
-      return { ring: inner ? 0 : 1, f: (((deg + 90) % 360) + 360) % 360 / 360, tile: tileAt(st, d, cx + r * Math.cos(a), cy + r * Math.sin(a)) };
+      return { ring: inner ? 0 : 1, f: (((deg + 90) % 360) + 360) % 360 / 360, tile: add(st, `<span class="tl" style="--x:${cx + r * Math.cos(a)}px;--y:${cy + r * Math.sin(a)}px">${lt(d, 38)}<span class="bd">${TICK}</span></span>`) };
     });
-    const core = add(st, `<div class="core" style="--x:${cx}px;--y:${cy}px"><span class="wv" style="--i:0"></span><span class="wv" style="--i:1"></span><span class="wv" style="--i:2"></span>${MARK}</div>`);
+    const core = add(st, `<div class="core" style="--x:${cx}px;--y:${cy}px">${MARK}</div>`);
+    [.24, .16, .1].forEach((o, i) => add(st, `<span class="wf" style="--x:${cx}px;--y:${cy}px;--o:${o};--i:${i}"></span>`));
     const pill = add(st, `<div class="pl pl--soft" style="--x:180px;--y:382px"><span class="fa">Sending campaign</span><span class="fb">${MARK}Live on 12 platforms</span></div>`);
     return {
       H,
-      reset() { c.stop(); still(st, () => { off(st, 'sent'); off([core, pill], 'in'); off(core, 'wave'); rings.forEach(r => { off(r.line, 'on'); off(r.sweep, 'go'); }); spots.forEach(s => off(s.tile, 'in', 'live', 'bump')); }); },
+      reset() { c.stop(); still(st, () => { off(st, 'sent', 'wave'); off([core, pill], 'in'); rings.forEach(r => { off(r.line, 'on'); off(r.sweep, 'go'); }); spots.forEach(s => off(s.tile, 'in', 'live', 'bump', 'conn')); }); },
       play() {
         c.at(150, () => on(core));
         rings.forEach((r, i) => c.at(450 + i * 200, () => on(r.line, 'on')));
@@ -242,8 +243,8 @@
         c.at(1900, () => on(pill));
         rings.forEach((r, i) => { const t = 2400 + i * 250; c.at(t, () => fire(r.sweep)); c.at(t + 1650, () => off(r.sweep, 'go')); });
         spots.forEach(s => c.at(2400 + s.ring * 250 + s.f * 1600 + 60, () => on(s.tile, 'live')));
-        c.at(4450, () => on(core, 'wave'));
-        spots.forEach(s => c.at(4450 + (s.ring ? 620 : 300), () => on(s.tile, 'bump')));
+        c.at(4450, () => on(st, 'wave'));
+        spots.forEach(s => c.at(4450 + (s.ring ? 620 : 300), () => on(s.tile, ['bump', 'conn'])));
         c.at(5500, () => on(st, 'sent'));
       }
     };
