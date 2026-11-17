@@ -54,6 +54,7 @@
     }
   };
 
+  V[3] = { ...V[2], glide: 2300, framed: true, roam: true, label: 'Twelve buying platforms glide into AdLib, which buys, optimizes and bills, and each campaign goes live' };
   const fl = $('#fl');
   let v = 1, S = null, timers = [], raf = 0, running = false, visible = false, lastW = 0;
   const later = (ms, fn) => timers.push(setTimeout(fn, ms));
@@ -63,13 +64,14 @@
   const rad = d => d * Math.PI / 180;
 
   /* A list that ticks forward one step at a time, like a picker settling into its detent */
-  const ticker = (n, place) => {
-    let pos = 0, from = 0, to = 0, t0 = 0;
+  const ticker = (n, place, glide = 0) => {
+    let pos = 0, from = 0, to = 0, t0 = 0, g0 = 0;
     const wrap = d => ((d % n) + n + n / 2) % n - n / 2;
     return {
-      next() { from = pos; to = Math.round(pos) + 1; t0 = performance.now(); },
+      next() { if (glide) return; from = pos; to = Math.round(pos) + 1; t0 = performance.now(); },
       frame(now) {
-        if (t0) { const k = Math.min(1, (now - t0) / 820); pos = from + (to - from) * ease(k); if (k === 1) { t0 = 0; pos = to; } }
+        if (glide) { if (!g0) g0 = now - pos * glide; pos = (now - g0) / glide; }
+        else if (t0) { const k = Math.min(1, (now - t0) / 820); pos = from + (to - from) * ease(k); if (k === 1) { t0 = 0; pos = to; } }
         for (let i = 0; i < n; i++) place(i, wrap(i - pos));
       },
       focus() { return ((Math.round(pos) % n) + n) % n; }
@@ -132,7 +134,7 @@
       const rot = Math.atan2(cy - y, cx - x) * 180 / Math.PI - 22.6;
       const s = side;
       const e = el(`<div class="cu ${s}" style="--x:${x}px;--y:${y}px;--r:${rot}deg">${ARROW}<span><i style="--c:${color}">${mini(ic)}</i>${label}</span></div>`);
-      return { e, x, y, ph: Math.random() * 6.28, sp: .00055 + Math.random() * .0003 };
+      return { e, x, y, d, ph: Math.random() * 6.28, ph2: Math.random() * 6.28, sp: cfg.roam ? .00042 + Math.random() * .00018 : .00055 + Math.random() * .0003 };
     });
 
     /* Wheel */
@@ -151,8 +153,8 @@
       const a = Math.abs(d);
       e.style.opacity = Math.max(0, Math.min(1, 1 - Math.max(0, a - .6) / (lim - .2))).toFixed(3);
       e.style.setProperty('--f', Math.max(0, 1 - a * 1.6).toFixed(3));
-      e.classList.toggle('on', a < .35);
-    });
+      e.classList.toggle('on', a < .35 && !cfg.framed);
+    }, cfg.glide || 0);
 
     /* Stack */
     const s = cfg.stack, sn = s.items.length, gap = vert ? 70 : 78;
@@ -168,7 +170,8 @@
       e.classList.toggle('on', a < .35);
     });
 
-    S = { wheel, stack, streakIn, streakOut, pulses, cursors, wheelIn: w.side === 'in' };
+    S = { wheel, stack, streakIn, streakOut, pulses, cursors, wheelIn: w.side === 'in', roam: !!cfg.roam, cx, cy, rc, vert };
+    fl.classList.toggle('roam', !!cfg.roam); fl.classList.toggle('framed', !!cfg.framed);
     frame(performance.now());
   };
 
@@ -176,6 +179,15 @@
   const frame = now => {
     if (!S) return;
     S.wheel.frame(now); S.stack.frame(now);
+    if (S.roam) {
+      S.cursors.forEach(c => {
+        const a = rad(c.d + Math.sin(now * c.sp + c.ph) * (S.vert ? 16 : 24)), r = S.rc + Math.sin(now * c.sp * 1.37 + c.ph2) * (S.vert ? 10 : 22);
+        const x = S.cx + r * Math.cos(a), y = S.cy - r * Math.sin(a);
+        c.e.style.setProperty('--x', x + 'px'); c.e.style.setProperty('--y', y + 'px');
+        c.e.style.setProperty('--r', Math.atan2(S.cy - y, S.cx - x) * 180 / Math.PI - 22.6 + 'deg');
+      });
+      return;
+    }
     S.cursors.forEach(c => {
       const ox = Math.sin(now * c.sp + c.ph) * 4, oy = Math.cos(now * c.sp * .8 + c.ph) * 3;
       c.e.style.setProperty('--x', c.x + ox + 'px'); c.e.style.setProperty('--y', c.y + oy + 'px');
@@ -205,12 +217,12 @@
   const pick = n => {
     v = n;
     history.replaceState(null, '', '#' + n);
-    document.body.classList.toggle('t1', n === 1); document.body.classList.toggle('t2', n === 2);
+    document.body.classList.toggle('t1', n === 1); document.body.classList.toggle('t2', n !== 1);
     buttons.forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === n)));
-    hint.textContent = n === 1 ? 'White' : 'Purple';
+    hint.textContent = ['White', 'Purple', 'Moving'][n - 1];
     build();
     if (visible) start();
   };
   buttons.forEach(b => b.addEventListener('click', () => pick(+b.dataset.v)));
-  pick(location.hash === '#2' ? 2 : 1);
+  pick({ '#2': 2, '#3': 3 }[location.hash] || 1);
 })();
