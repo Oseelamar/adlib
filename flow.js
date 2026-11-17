@@ -55,6 +55,7 @@
   };
 
   V[3] = { ...V[2], glide: 2300, framed: true, roam: true, label: 'Twelve buying platforms glide into AdLib, which buys, optimizes and bills, and each campaign goes live' };
+  V[4] = { ...V[1], glide: 2300, framed: true, roam: true, label: 'Twelve buying platforms glide into AdLib, which handles setup, pacing and reporting and sends back one stream of results' };
   const fl = $('#fl');
   let v = 1, S = null, timers = [], raf = 0, running = false, visible = false, lastW = 0;
   const later = (ms, fn) => timers.push(setTimeout(fn, ms));
@@ -217,12 +218,13 @@
   const pick = n => {
     v = n;
     history.replaceState(null, '', '#' + n);
-    document.body.classList.toggle('t1', n === 1); document.body.classList.toggle('t2', n !== 1);
+    const light = n === 1 || n === 4;
+    document.body.classList.toggle('t1', light); document.body.classList.toggle('t2', !light); document.body.classList.toggle('plain', n === 4);
     buttons.forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === n)));
-    hint.textContent = ['White', 'Purple', 'Moving'][n - 1];
+    hint.textContent = ['White', 'Purple', 'Moving', 'White moving'][n - 1];
     build();
     if (visible) start();
   };
   buttons.forEach(b => b.addEventListener('click', () => pick(+b.dataset.v)));
-  pick({ '#2': 2, '#3': 3 }[location.hash] || 1);
+  pick({ '#2': 2, '#3': 3, '#4': 4 }[location.hash] || 1);
 })();
