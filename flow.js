@@ -41,15 +41,15 @@
       cursors: [['Setup', 'gear', '#535BFE', 148, 'l'], ['Pacing', 'wave', '#F08A1C', 22, 'r'], ['Reporting', 'bars', '#0A8585', 258, 'r']]
     },
     2: {
-      label: 'Campaigns flow into AdLib, which buys, optimizes and bills, and each campaign goes live on every buying platform',
-      stack: { side: 'in', items: [
-        ['tv', 'Holiday CTV', 'Connected TV, $48,250', 'Draft'],
-        ['audio', 'Spring launch', 'Audio, $12,000', 'Draft'],
-        ['dooh', 'Store opening', 'Digital out-of-home, $20,000', 'Draft'],
-        ['video', 'Brand story', 'Video, $30,000', 'Draft'],
-        ['display', 'Retargeting', 'Display, $8,500', 'Draft']
+      label: 'Twelve buying platforms flow into AdLib, which buys, optimizes and bills, and each campaign goes live',
+      wheel: { side: 'in', items: DSP.map(([n, m]) => ({ n, m })) },
+      stack: { side: 'out', items: [
+        ['tv', 'Holiday CTV', 'Connected TV, $48,250', 'Live'],
+        ['audio', 'Spring launch', 'Audio, $12,000', 'Live'],
+        ['dooh', 'Store opening', 'Digital out-of-home, $20,000', 'Live'],
+        ['video', 'Brand story', 'Video, $30,000', 'Live'],
+        ['display', 'Retargeting', 'Display, $8,500', 'Live']
       ] },
-      wheel: { side: 'out', live: true, items: DSP.map(([n, m]) => ({ n, m })) },
       cursors: [['Buying', 'tick', '#535BFE', 152, 'l'], ['Optimizing', 'wave', '#F08A1C', 30, 'r'], ['Billing', 'bars', '#0A8585', 262, 'r']]
     }
   };
@@ -122,7 +122,7 @@
 
     /* Core and its pulse */
     const pulses = [.16, .1].map((o, i) => el(`<span class="pz" style="--d:${coreD}px;--x:${cx}px;--y:${cy}px;--o:${o};--i:${i}"></span>`));
-    el(`<div class="co" style="--d:${coreD}px;--x:${cx}px;--y:${cy}px"><img src="assets/logo.svg" alt="" width="126" height="26"></div>`);
+    el(`<div class="co" style="--d:${coreD}px;--x:${cx}px;--y:${cy}px"><img src="assets/logo-white.svg" alt="" width="126" height="26"></div>`);
 
     /* Cursors around the core */
     const rc = coreD / 2 + (vert ? 30 : 58);
